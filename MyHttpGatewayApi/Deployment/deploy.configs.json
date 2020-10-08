@@ -1,0 +1,17 @@
+
+{
+    "Information" : [
+        "Use this as a template for an other stage files"
+    ],
+    "profile"     : "PUBLISH PROFILE ACCOUNT",
+    "region"      : "AWS REGION",
+    "configuration" : "RELEASE TYPE (PRODUCTION/STAGING/DEVELOPMENT)",
+    "framework"     : "netcoreapp3.1",
+    "s3-prefix"     : "S3 BUCKET TO HOLD BUILD FILES",
+    "template"      : "PATH TO TEMPLATE FILE",
+    "template-parameters" : "\"DomainName\"=\"DOMAIN\";\"CertificateArn\"=\"ARN\";\"HostedZoneId\"=\"HOSTEDZONEID\"",
+    "s3-bucket"           : "BUCKET NAME",
+    "stack-name"          : "STACK NAME",
+    "function-name"       : "FUNCTION NAME",
+    "function-runtime"    : "dotnetcore3.1"
+}

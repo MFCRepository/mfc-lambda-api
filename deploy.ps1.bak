@@ -1,0 +1,36 @@
+$option = Read-Host -Prompt '
+Select the deployment stage to target (ex: 2): 
+
+	1. Development
+	2. Staging
+	3. Production
+	
+Selection'
+
+$stageName = ""
+
+switch ($option)
+{
+    1 {$stageName = "development"}
+    2 {$stageName = "staging"}
+    3 {$stageName = "production"}
+}
+
+#Write-Host $stageName
+$configFilePath = "Deployment\deploy.configs.$stageName.json"
+
+$json = Get-Content -Raw -Path "MyHttpGatewayApi\Deployment\deploy.configs.$stageName.json" | ConvertFrom-Json
+
+$display = $json | Format-List | Out-String
+
+$continue = Read-Host -Prompt "
+This will deploy this lambda function with the following settings:
+	$display
+Do you want to proceed? (y/n)"
+
+if ($continue -eq 'y' -OR $continue -eq 'Y') {
+	$argList = "lambda deploy-function -C $stagename -cfg $configFilePath -pcfg true -pl MyHttpGatewayApi\ ;pause"
+	
+	Start-Process -FilePath 'dotnet' -ArgumentList $argList -Wait
+	
+}

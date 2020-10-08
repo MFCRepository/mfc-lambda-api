@@ -1,0 +1,31 @@
+{
+  "profiles": [
+    {
+      "profile_name": "",
+      "credentials": {
+        "aws_access_key_id": "",
+        "aws_secret_key": ""
+      },
+      "environments": [
+        {
+          "name": "",
+          "region": "",
+          "profile": "",
+          "domain": {
+            "domain_name": "",
+            "certificate_arn": "",
+            "hosted_zone_id": ""
+          },
+          "stack_name": "",
+          "function_name": "",
+          "stages": [ "" ],
+          "vpc_configs": {
+            "vpc_id": "",
+            "security_group_ids": [ "" ],
+            "subnet_ids": [ "" ]
+          }
+        }
+      ]
+    }
+  ]
+}

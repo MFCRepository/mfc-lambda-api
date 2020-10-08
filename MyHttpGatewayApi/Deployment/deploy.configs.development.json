@@ -1,0 +1,17 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard to deploy this project to the development staging environment"
+    ],
+    "profile"     : "default",
+    "region"      : "us-east-2",
+    "configuration" : "development",
+    "framework"     : "netcoreapp3.1",
+    "s3-prefix"     : "mfc-lambda-api/",
+    "template"      : "MyHttpGatewayApi\\Deployment\\serverless.development.template",
+    "template-parameters" : "\"DomainName\"=\"development.api.myfleet.services\";\"CertificateArn\"=\"arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444\";\"HostedZoneId\"=\"ZS3NMS6JE8YIB\"",
+    "s3-bucket"           : "lambda-web-api-bucket",
+    "stack-name"          : "mfc-lambda-api",
+    "function-name"       : "development-mfc-lambda-api-AspNetCoreFunction-NLBYT8D2RKAV",
+    "function-runtime"    : "dotnetcore3.1"
+}

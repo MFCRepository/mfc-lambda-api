@@ -1,0 +1,67 @@
+{
+  "profiles": [
+    {
+      "profile_name": "mfc-lambda-api",
+      "credentials": {
+        "aws_access_key_id": "",
+        "aws_secret_key": ""
+      },
+      "environments": [
+        {
+          "name": "development",
+          "region": "us-east-2",
+          "profile": "default",
+          "domain": {
+            "domain_name": "development.api.myfleet.services",
+            "certificate_arn": "arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444",
+            "hosted_zone_id": "ZS3NMS6JE8YIB"
+          },
+          "stack_name": "development-mfc-lambda-api",
+          "function_name": "development-mfc-lambda-api-AspNetCoreFunction-NLBYT8D2RKAV",
+          "stages": [ "dev", "stage", "prod" ],
+          "vpc_configs": {
+            "vpc_id": "vpc-0177d867356381a9a",
+            "security_group_ids": [ "sg-03460a70932ddef29" ],
+            "subnet_ids": [ "subnet-03f7bf22abec1f637", "subnet-012282535a5e47b09", "subnet-0e4e5141160137082" ]
+          }
+        },
+        {
+          "name": "staging",
+          "region": "us-east-2",
+          "profile": "default",
+          "domain": {
+            "domain_name": "staging.api.myfleet.services",
+            "certificate_arn": "arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444",
+            "hosted_zone_id": "ZS3NMS6JE8YIB"
+          },
+          "stack_name": "staging-mfc-lambda-api",
+          "function_name": "staging-mfc-lambda-api-AspNetCoreFunction-SY8VKX6SG6YC",
+          "stages": [ "dev", "stage", "prod" ],
+          "vpc_configs": {
+            "vpc_id": "vpc-0177d867356381a9a",
+            "security_group_ids": [ "sg-03460a70932ddef29" ],
+            "subnet_ids": [ "subnet-03f7bf22abec1f637", "subnet-012282535a5e47b09", "subnet-0e4e5141160137082" ]
+          }
+        },
+        {
+          "name": "production",
+          "region": "us-east-2",
+          "profile": "default",
+          "domain": {
+            "domain_name": "api.myfleet.services",
+            "certificate_arn": "arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444",
+            "hosted_zone_id": "ZS3NMS6JE8YIB"
+          },
+          "stack_name": "production-mfc-lambda-api",
+          "function_name": "production-mfc-lambda-api-AspNetCoreFunction-ZLMZRHA8ZM03",
+          "stages": [ "dev", "stage", "prod" ],
+          "vpc_configs": {
+            "vpc_id": "vpc-0177d867356381a9a",
+            "security_group_ids": [ "sg-03460a70932ddef29" ],
+            "subnet_ids": [ "subnet-03f7bf22abec1f637", "subnet-012282535a5e47b09", "subnet-0e4e5141160137082" ]
+          }
+        }
+      ]
+    }
+  ]
+}
