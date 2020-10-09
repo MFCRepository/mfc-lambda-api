@@ -18,64 +18,18 @@ namespace MyHttpGatewayApi.Utilities.AmazonWebServices
             public string Database_Key { get => "database/api/api-database-credentials"; }
         }
 
-        public class Credentials
-        {
-            public string username { get; set; }
-            public string password { get; set; }
-
-        }
-        public class Database
-        {
-            public class Database_Credentials: Credentials
-            {
-                public List<string> permissions { get; set; }
-            }
-
-            public List<Database_Credentials> credentials = new List<Database_Credentials>();
-        }
-
-        public class AWS
-        {
-            public class AWS_Credentials
-            {
-                public string access_key { get; set; }
-                public string access_key_id { get; set; }
-                public string service { get; set; }
-                public List<string> permissions { get; set; }
-            }
-
-            public List<AWS_Credentials> credentials = new List<AWS_Credentials>();
-        }
-
-        public class Outlook
-        {
-            public class OutlookCredentials : Credentials
-            {
-                public string name { get; set; }
-                public string address {get;set ;}
-                
-            }
-
-            public class Root
-            {
-                public List<OutlookCredentials> send_credentials = new List<OutlookCredentials>();
-            }
-
-            public Root credentials = new Root();
-        }
-
-        public static Database database_credentials = new Database();
-        public static Outlook outlook_credentials = new Outlook();
-        public static AWS amazon_web_services_credentials = new AWS();
+        public static StaticClassMembers.SecretsManager.Database database_credentials = new StaticClassMembers.SecretsManager.Database();
+        public static StaticClassMembers.SecretsManager.Outlook outlook_credentials = new StaticClassMembers.SecretsManager.Outlook();
+        public static StaticClassMembers.SecretsManager.AWS amazon_web_services_credentials = new StaticClassMembers.SecretsManager.AWS();
         private static readonly SecretsManager_Keys Keys;
 
         static SecretsManager()
         {
             /* initialize the secrets */
 
-            database_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<Database>(GetSecret(Keys.Database_Key));
-            outlook_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<Outlook>(GetSecret(Keys.Outlook365_Key));
-            amazon_web_services_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<AWS>(GetSecret(Keys.AWS_Key));
+            database_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<StaticClassMembers.SecretsManager.Database>(GetSecret(Keys.Database_Key));
+            outlook_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<StaticClassMembers.SecretsManager.Outlook>(GetSecret(Keys.Outlook365_Key));
+            amazon_web_services_credentials = Newtonsoft.Json.JsonConvert.DeserializeObject<StaticClassMembers.SecretsManager.AWS>(GetSecret(Keys.AWS_Key));
 
         }
        
@@ -106,37 +60,37 @@ namespace MyHttpGatewayApi.Utilities.AmazonWebServices
             {
                 // Secrets Manager can't decrypt the protected secret text using the provided KMS key.
                 // Deal with the exception here, and/or rethrow at your discretion.
-                //throw;
+                throw;
             }
             catch (InternalServiceErrorException e)
             {
                 // An error occurred on the server side.
                 // Deal with the exception here, and/or rethrow at your discretion.
-                //throw;
+                throw;
             }
             catch (InvalidParameterException e)
             {
                 // You provided an invalid value for a parameter.
                 // Deal with the exception here, and/or rethrow at your discretion
-                //throw;
+                throw;
             }
             catch (InvalidRequestException e)
             {
                 // You provided a parameter value that is not valid for the current state of the resource.
                 // Deal with the exception here, and/or rethrow at your discretion.
-                //throw;
+                throw;
             }
             catch (ResourceNotFoundException e)
             {
                 // We can't find the resource that you asked for.
                 // Deal with the exception here, and/or rethrow at your discretion.
-                //throw;
+                throw;
             }
             catch (System.AggregateException ae)
             {
                 // More than one of the above exceptions were triggered.
                 // Deal with the exception here, and/or rethrow at your discretion.
-                //throw;
+                throw;
             }
 
             // Decrypts secret using the associated KMS CMK.
@@ -155,5 +109,54 @@ namespace MyHttpGatewayApi.Utilities.AmazonWebServices
             // Your code goes here.
             return secret;
         }
+    }
+}
+
+namespace StaticClassMembers.SecretsManager
+{
+    public class Credentials
+    {
+        public string username { get; set; }
+        public string password { get; set; }
+
+    }
+    public class Database
+    {
+        public class Database_Credentials : Credentials
+        {
+            public List<string> permissions { get; set; }
+        }
+
+        public List<Database_Credentials> credentials = new List<Database_Credentials>();
+    }
+
+    public class AWS
+    {
+        public class AWS_Credentials
+        {
+            public string access_key { get; set; }
+            public string access_key_id { get; set; }
+            public string service { get; set; }
+            public List<string> permissions { get; set; }
+        }
+
+        public List<AWS_Credentials> credentials = new List<AWS_Credentials>();
+    }
+
+    public class Outlook
+    {
+        public class OutlookCredentials : Credentials
+        {
+            public string name { get; set; }
+            public string address { get; set; }
+
+        }
+
+        public class Root
+        {
+            public List<OutlookCredentials> send_credentials = new List<OutlookCredentials>();
+        }
+
+        public Root credentials = new Root();
     }
 }

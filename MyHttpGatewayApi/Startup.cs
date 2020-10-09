@@ -31,7 +31,7 @@ namespace MyHttpGatewayApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            string _o = Newtonsoft.Json.JsonConvert.SerializeObject(new Exception("test"));
             app.UseHttpsRedirection();
             
             app.UseRouting();

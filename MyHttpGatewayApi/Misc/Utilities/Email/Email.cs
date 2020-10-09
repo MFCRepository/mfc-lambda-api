@@ -156,5 +156,4 @@ namespace MyHttpGatewayApi.Utilities
             }
         }
     }
-
 }

@@ -16,6 +16,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Misc\Utilities\Logging\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

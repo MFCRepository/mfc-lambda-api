@@ -5,7 +5,7 @@
    "Parameters":{
       "DomainName":{
          "Type":"String",
-         "Description":"https://api.myfleet.services"
+         "Description":"https://development.api.myfleet.services"
       },
       "CertificateArn":{
          "Type":"String",

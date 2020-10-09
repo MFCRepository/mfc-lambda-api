@@ -10,10 +10,10 @@
     "region"      : "us-east-2",
     "configuration" : "Release",
     "framework"     : "netcoreapp3.1",
-    "s3-prefix"     : "production-mfc-lambda-api/",
-    "template"      : "MyHttpGatewayApi\\Deployment\\serverless.production.template",
-    "template-parameters" : "\"DomainName\"=\"api.myfleet.services\";\"CertificateArn\"=\"arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444\";\"HostedZoneId\"=\"ZS3NMS6JE8YIB\"",
+    "s3-prefix"     : "development-mfc-lambda-api/",
+    "template"      : "serverless.template",
+    "template-parameters" : "\"DomainName\"=\"development.api.myfleet.services\";\"CertificateArn\"=\"arn:aws:acm:us-east-2:037658755443:certificate/cb5657c9-8126-43df-a1ec-d1c89b016444\";\"HostedZoneId\"=\"ZS3NMS6JE8YIB\"",
     "s3-bucket"           : "lambda-web-api-bucket",
-    "stack-name"          : "production-mfc-lambda-api",
+    "stack-name"          : "development-mfc-lambda-api",
     "function-runtime"    : "dotnetcore3.1"
 }

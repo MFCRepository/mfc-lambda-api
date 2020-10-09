@@ -20,6 +20,31 @@ namespace MyHttpGatewayApi.Controllers.Misc
             return new Output() { Health = "ok", Environment = (GetSubDomain(HttpContext) == "api" ? "production" : GetSubDomain(HttpContext)) };
         }
 
+        // GET api/<urlController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "";
+        }
+
+        // POST api/<urlController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/<urlController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<urlController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+
         public string GetSubDomain(HttpContext httpContext)
         {
             var subDomain = string.Empty;
